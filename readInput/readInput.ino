@@ -53,14 +53,14 @@ void loop() {
 
 
 void printNum(int row, int column){
-  delay(1);
+  delay(100);
   if(row != lastRow && column !=lastColumn){
     lastRow = row;
     lastColumn = column;
     rowCount = 0;
     columnCount = 0;
   }else{
-    if(rowCount == 20 && columnCount == 20){
+    if(rowCount == 50 && columnCount == 50){
       Serial.println(mapping[row-5][column-2]);
       rowCount = 0;
       columnCount = 0;
