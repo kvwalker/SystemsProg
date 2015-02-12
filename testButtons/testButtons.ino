@@ -14,17 +14,17 @@ void setup() {
   pinMode(2, OUTPUT); //Acts as Anode. 
   pinMode(3, OUTPUT); //Used to control LED. A 
   pinMode(4, OUTPUT); //Used to control LED. B 
-  pinMode(5, INPUT); //Used to control LED. B
-  pinMode(6, INPUT); //Used to control LED. B
-  pinMode(7, INPUT); //Used to control LED. B
-  pinMode(8, INPUT); //Used to control LED. B
+  pinMode(5, INPUT_PULLUP); //Used to control LED. B
+  pinMode(6, INPUT_PULLUP); //Used to control LED. B
+  pinMode(7, INPUT_PULLUP); //Used to control LED. B
+  pinMode(8, INPUT_PULLUP); //Used to control LED. B
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  //digitalWrite(2,HIGH);
-  digitalWrite(3,HIGH);
-  //digitalWrite(4,HIGH);
+  digitalWrite(2,HIGH);
+  digitalWrite(3,LOW);
+  digitalWrite(4,HIGH);
   v2 = digitalRead(2);
   v3 = digitalRead(3);
   v4 = digitalRead(4);

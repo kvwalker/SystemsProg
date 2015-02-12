@@ -21,10 +21,10 @@ void setup() {
   pinMode(2, OUTPUT); //column 3 
   pinMode(3, OUTPUT); //column 2 
   pinMode(4, OUTPUT); //column 1 
-  pinMode(5, INPUT); //Row 4
-  pinMode(6, INPUT); //Row 3
-  pinMode(7, INPUT); //Row 2
-  pinMode(8, INPUT); //Row 1
+  pinMode(5, INPUT_PULLUP); //Row 4
+  pinMode(6, INPUT_PULLUP); //Row 3
+  pinMode(7, INPUT_PULLUP); //Row 2
+  pinMode(8, INPUT_PULLUP); //Row 1
   
   //+---+---+---+---+
   //|   | 4 | 3 | 2 |
@@ -39,10 +39,12 @@ void setup() {
 void loop() {
   //run through every column
   for(int i=2;i<4;i++){
-    digitalWrite(i,HIGH);
+    digitalWrite((i+1)%3,HIGH);
+    digitalWrite((i+2)%3,HIGH);
+    digitalWrite(i,LOW);
     //run through every row
     for(int j=5;j<9;j++){
-      if(digitalRead(j) == 1){
+      if(digitalRead(j) == 0){
        printNum(j,i); 
       }
     }
@@ -58,7 +60,7 @@ void printNum(int row, int column){
     rowCount = 0;
     columnCount = 0;
   }else{
-    if(rowCount == 10 && columnCount == 10){
+    if(rowCount == 20 && columnCount == 20){
       Serial.println(mapping[row-5][column-2]);
       rowCount = 0;
       columnCount = 0;
