@@ -1,17 +1,17 @@
-int lastRow=1;
-int lastColumn=1;
-int rowArray[20];
-int columnArray[20];
-int rowCount=0;
-int columnCount=0;
-int v8=1;
+int lastRow=1; //button pressed originally
+int lastColumn=1; //button pressed originally
+int rowArray[20]; //not needed
+int columnArray[20]; //not needed
+int rowCount=0; //when 20, confirm that button was pressed
+int columnCount=0; //when 20, confirm that button was pressed
+int v8=1; //not needed
 
 char mapping[4][3] = {
                      {'#','0','*'},
                      {'9','8','7'},
                      {'6','5','4'},
                      {'3','2','1'}
-                     };
+                     }; //2D array of keypad [opposite of keypad because this is how pins are set up]
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -21,7 +21,7 @@ void setup() {
   pinMode(2, OUTPUT); //column 3 
   pinMode(3, OUTPUT); //column 2 
   pinMode(4, OUTPUT); //column 1 
-  pinMode(5, INPUT_PULLUP); //Row 4
+  pinMode(5, INPUT_PULLUP); //Row 4; when pressed, INPUT_PULLUP changes to 0
   pinMode(6, INPUT_PULLUP); //Row 3
   pinMode(7, INPUT_PULLUP); //Row 2
   pinMode(8, INPUT_PULLUP); //Row 1
@@ -38,7 +38,7 @@ void setup() {
 // the loop function runs over and over again forever
 void loop() {
   //run through every column
-  for(int i=2;i<4;i++){
+  for(int i=2;i<5;i++){
     digitalWrite((i+1)%3,HIGH);
     digitalWrite((i+2)%3,HIGH);
     digitalWrite(i,LOW);
