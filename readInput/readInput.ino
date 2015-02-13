@@ -1,3 +1,9 @@
+/* 
+   This is a program to interpret input from a numerical keypad.  
+   Systems Programming Homework 5
+   Si Chen, Joshua Shapiro, Abigail Shriver, Katherine Walker
+*/
+
 int lastRow=1; //button pressed originally
 int lastColumn=1; //button pressed originally
 int rowCount=0; //when 20, confirm that button was pressed
