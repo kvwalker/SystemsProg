@@ -4,7 +4,7 @@ int rowArray[20]; //not needed
 int columnArray[20]; //not needed
 int rowCount=0; //when 20, confirm that button was pressed
 int columnCount=0; //when 20, confirm that button was pressed
-int v8=1; //not needed
+int scan=0;
 
 char mapping[4][3] = {
                      {'#','0','*'},
@@ -46,6 +46,15 @@ void loop() {
     for(int j=5;j<9;j++){
       if(digitalRead(j) == 0){ //when digitalRead(j)=0, the button was pressed
        printNum(j,i); 
+       scan = 0;
+       printNum(j,i);
+      }else{
+       if(scan == 12){
+       lastRow = 1;
+       lastColumn = 1;
+       }else{
+       scan++;
+     } 
       }
     }
   }
@@ -53,19 +62,11 @@ void loop() {
 
 
 void printNum(int row, int column){
-  delay(1);
-  if(row != lastRow && column !=lastColumn){
+  delay(10);
+  //Serial.println(mapping[row-5][column-2]);
+  if(row != lastRow || column !=lastColumn){
     lastRow = row;
     lastColumn = column;
-    rowCount = 0;
-    columnCount = 0;
-  }else{
-    if(rowCount == 20 && columnCount == 20){
-      Serial.println(mapping[row-5][column-2]);
-      rowCount = 0;
-      columnCount = 0;
-    }
-   rowCount++;
-   columnCount++;
-  } 
+    Serial.println(mapping[row-5][column-2]);
+  }
 }
