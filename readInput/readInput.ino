@@ -45,7 +45,6 @@ void loop() {
     //when one column on, run through every row
     for(int j=5;j<9;j++){
       if(digitalRead(j) == 0){ //when digitalRead(j)=0, the button was pressed
-       printNum(j,i); 
        scan = 0;
        printNum(j,i);
       }else{
