@@ -39,9 +39,9 @@ void setup() {
 void loop() {
   //run through every column
   for(int i=2;i<5;i++){
-    digitalWrite((i+1)%3, HIGH);
-    digitalWrite((i+2)%3, HIGH);
-    digitalWrite(i, LOW);
+    digitalWrite(((i-1)%3)+2,HIGH);
+    digitalWrite((i%3)+2,HIGH);
+    digitalWrite(i,LOW);
     //when one column on, run through every row
     for(int j=5;j<9;j++){
       if(digitalRead(j) == 0){ //when digitalRead(j)=0, the button was pressed
